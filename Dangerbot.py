@@ -45,30 +45,4 @@ async def on_message(message):
       await client.send_message(message.channel, embed=embed)
 
 
-# @client.event
-# async def on_message(message):
-#     if message.content.startswith('$start'):
-#         await client.send_message(message.channel, 'Type $stop 4 times.')
-#         for i in range(4):
-#             msg = await client.wait_for_message(author=message.author, content='$stop')
-#             fmt = '{} left to go...'
-#             await client.send_message(message.channel, fmt.format(3 - i))
-
-#         await client.send_message(message.channel, 'Good job!')
-
-# @client.command()
-# async def ping(*args):
-
-#   await client.say("SPENCER MEK NOW!!")
-#   await asyncio.sleep(3)
-
-# hello = "hello"
-
-
-# async def ping(hello):
-
-#   await client.say("Oh hi")
-#   await asyncio.sleep(3)
-
-
 client.run('NDA3MzA5NDQwMzEyOTM0NDEw.DbRUGw.lL3KVWP_8PDd7Ljou1FTQo-biQU')
