@@ -22,11 +22,39 @@ async def on_ready():
 
 @client.event
 async def on_message(message):
-  if message.content.startswith('$hello'):
+  if message.content.startswith('$spencer'):
     await client.send_message(message.channel, 'SPENCER MEK NOW')
-    msg = await client.wait_for_message(author=message.author, content='to hello')
-    await client.send_message(message.channel, 'plz Hello.')
+    imageURL = "http://1.bp.blogspot.com/-jjrcg9oIe4M/UhMzgSuHdrI/AAAAAAAABSY/nrEQA4v3OwI/s1600/Dota+2+Mekanism.bmp"
+    embed = discord.Embed()
+    embed.set_image(url=imageURL)
+    await client.send_message(message.channel, embed=embed)
+    msg = await client.wait_for_message(timeout=5, content='lol')
+    await client.send_message(message.channel, 'Yea, spencer let me die in Dota so many times')
 
+  if message.content.startswith('$notice me senpai'):
+    author = message.author
+    authorid = message.author.id
+    print("@{} user sent a message. (id: {})".format(author, authorid))
+
+    if message.content == "$notice me senpai":
+      print('I noticed you @{}!'.format(authorid))
+      await client.send_message(message.channel, 'I noticed you @{} !'.format(author))
+      imageURL = "https://media2.giphy.com/media/zZOakyWLMzDws/giphy.gif"
+      embed = discord.Embed()
+      embed.set_image(url=imageURL)
+      await client.send_message(message.channel, embed=embed)
+
+
+# @client.event
+# async def on_message(message):
+#     if message.content.startswith('$start'):
+#         await client.send_message(message.channel, 'Type $stop 4 times.')
+#         for i in range(4):
+#             msg = await client.wait_for_message(author=message.author, content='$stop')
+#             fmt = '{} left to go...'
+#             await client.send_message(message.channel, fmt.format(3 - i))
+
+#         await client.send_message(message.channel, 'Good job!')
 
 # @client.command()
 # async def ping(*args):
