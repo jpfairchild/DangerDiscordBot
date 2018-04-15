@@ -6,43 +6,41 @@ from discord.ext import commands
 import platform
 
 # Here you can modify the bot's prefix and description and wether it sends help in direct messages or not.
-client = Bot(description="DangerBot", command_prefix="!", pm_help = False)
-
-
+client = Bot(description="DangerBot", command_prefix="$", pm_help=False)
 
 
 @client.event
 async def on_ready():
-  print('Logged in as '+client.user.name+' (ID:'+client.user.id+') | Connected to '+str(len(client.servers))+' servers | Connected to '+str(len(set(client.get_all_members())))+' users')
+  print('Logged in as ' + client.user.name + ' (ID:' + client.user.id + ') | Connected to ' + str(len(client.servers)) + ' servers | Connected to ' + str(len(set(client.get_all_members()))) + ' users')
   print('--------')
   print('Current Discord.py Version: {} | Current Python Version: {}'.format(discord.__version__, platform.python_version()))
   print('--------')
   print('Use this link to invite {}:'.format(client.user.name))
   print('https://discordapp.com/oauth2/authorize?client_id={}&scope=bot&permissions=8'.format(client.user.id))
-  return await client.change_presence(game=discord.Game(name='Bitch Please')) #This is buggy, let us know if it doesn't work.
+  return await client.change_presence(game=discord.Game(name='v3 please'))  # This is buggy, let us know if it doesn't work.
 
 
-@client.command()
-async def ping(*args):
-
-  await client.say(":ping_pong: Pong!")
-  await asyncio.sleep(3)
-
-async def ping("hello"):
-
-  await client.say("Oh hi")
-  await asyncio.sleep(3)
+@client.event
+async def on_message(message):
+  if message.content.startswith('$hello'):
+    await client.send_message(message.channel, 'SPENCER MEK NOW')
+    msg = await client.wait_for_message(author=message.author, content='to hello')
+    await client.send_message(message.channel, 'plz Hello.')
 
 
+# @client.command()
+# async def ping(*args):
+
+#   await client.say("SPENCER MEK NOW!!")
+#   await asyncio.sleep(3)
+
+# hello = "hello"
 
 
-client.run('p0YMCd910yKq8kmjiGda-3QpkDWbrZYt')
+# async def ping(hello):
 
-# Basic Bot was created by Habchy#1665
-# Please join this Discord server if you need help: https://discord.gg/FNNNgqb
-# Please modify the parts of the code where it asks you to. Example: The Prefix or The Bot Token
-# This is by no means a full bot, it's more of a starter to show you what the python language can do in Discord.
-# Thank you for using this and don't forget to star my repo on GitHub! [Repo Link: https://github.com/Habchy/BasicBot]
+#   await client.say("Oh hi")
+#   await asyncio.sleep(3)
 
-# The help command is currently set to be not be Direct Messaged.
-# If you would like to change that, change "pm_help = False" to "pm_help = True" on line 9.
+
+client.run('NDA3MzA5NDQwMzEyOTM0NDEw.DbRUGw.lL3KVWP_8PDd7Ljou1FTQo-biQU')
